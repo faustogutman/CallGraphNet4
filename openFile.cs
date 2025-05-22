@@ -17,7 +17,7 @@ public  class openFiles
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Title = "Select a text file";
-                openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+                openFileDialog.Filter = "Text Files (*.sql|*.txt)|*.txt|All Files (*.*)|*.*";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -39,7 +39,7 @@ public  class openFiles
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Title = "Select one or more text files";
-                openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+                openFileDialog.Filter = "Files PL/SQL (*.sql, *.pkb, *.pks, *.txt)|*.sql;*.pkb;*.pks;*.txt|Todos los archivos (*.*)|*.*";
                 openFileDialog.Multiselect = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.FileNames.Length > 0)

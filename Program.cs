@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 class Program
 {
@@ -32,7 +33,8 @@ class Program
 
         foreach (var filePath in selectedFiles)
         {
-            string content = File.ReadAllText(filePath);
+            string tempcontent = File.ReadAllText(filePath);
+            string content = tempcontent.Replace("\r\n", "\n");
             var routines = PLParser.ExtractRoutines(content);
             allRoutines.AddRange(routines);
         }

@@ -210,7 +210,7 @@ public static class PLParser
 
     private static string NameFromBody(string packageBody)
     {
-        Match nameMatch = Regex.Match(packageBody, @"PACKAGE\s+BODY\s+(\w+)", RegexOptions.IgnoreCase);
+        Match nameMatch = Regex.Match(packageBody, @"PACKAGE\s+BODY\s+(?:""[^""]+""\.)?""?(\w+)""?", RegexOptions.IgnoreCase);
         return nameMatch.Success ? nameMatch.Groups[1].Value : "UNKNOWN";
     }
 
