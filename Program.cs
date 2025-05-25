@@ -35,7 +35,7 @@ class Program
         {
             string tempcontent = File.ReadAllText(filePath);
             string content = tempcontent.Replace("\r\n", "\n");
-            var routines = PLParser.ExtractRoutines(content);
+            var routines = PLParser.ExtractRoutines(content.ToUpper());
             allRoutines.AddRange(routines);
         }
 
@@ -48,6 +48,10 @@ class Program
         var graph = DAGBuilder.BuildGraph(allRoutines);
         DAGBuilder.ExportToDot(graph, dotBasePath);
         Console.WriteLine($"Archivo .dot generado en: {dotBasePath}.dot");
+
+
+        var renderer = new DotGraphRenderer(dotBasePath+".dot", dotBasePath +".png");
+        renderer.GenerateGraphImage();
 
         //// Paso 6 (opcional): Renderizar imagen PNG
         //string pngPath = dotBasePath + ".png";
